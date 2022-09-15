@@ -1,10 +1,17 @@
+import json
+
+with open('chatbot_info.json', 'r') as f:
+    chatbot_info = json.load(f)
+
+CHATBOT_NAME = chatbot_info["name"]
+
 def list_of_intents():
-    CHATBOT_NAME = "Evy"
+
     return [
         {
             "tag": "Greeting",
+            "extension": {"function": ''},
             "text": [
-                "Hi",
                 "Hi there",
                 "Hola",
                 "Hello",
@@ -16,11 +23,11 @@ def list_of_intents():
                 "Hi, How can I help?",
                 "Hi, how can I help you?",
                 "Hello, what can I do for you?",
-                "Hola!, how can I help you?"
             ]
         },
         {
             "tag": "CourtesyGreeting",
+            "extension": {"function": ''},
             "text": [
                 "How are you?",
                 "Hi how are you?",
@@ -42,6 +49,7 @@ def list_of_intents():
         },
         {
             "tag": "CourtesyGreetingResponse",
+            "extension": {"function": ''},
             "text": [
                 "Good thanks! My user is Adam",
                 "Good thanks! This is Adam",
@@ -50,7 +58,10 @@ def list_of_intents():
                 "Great thanks! My user is Bella",
                 "Great thanks! This is Bella",
                 "Great thanks! I am Bella",
-                "Great thanks! It is Bella"
+                "Great thanks! It is Bella",
+                "I am fine",
+                "I am great thanks!",
+                "I am alright"
             ],
             "responses": [
                 "Great!, How can I help?",
@@ -62,8 +73,10 @@ def list_of_intents():
         },
         {
             "tag": "NameQuery",
+            "extension": {"function": ''},
             "text": [
                 "What is your name?",
+                "State your name?",
                 "What could I call you?",
                 "What can I call you?",
                 "What do your friends call you?",
@@ -78,6 +91,7 @@ def list_of_intents():
         },
         {
             "tag": "Thanks",
+            "extension": {"function": ''},
             "text": [
                 "OK thank you",
                 "OK thanks",
@@ -95,6 +109,7 @@ def list_of_intents():
         },
         {
             "tag": "NotTalking2U",
+            "extension": {"function": ''},
             "text": [
                 "I am not talking to you",
                 "I was not talking to you",
@@ -112,6 +127,7 @@ def list_of_intents():
         },
         {
             "tag": "UnderstandQuery",
+            "extension": {"function": ''},
             "text": [
                 "Do you understand what I am saying",
                 "Do you understand me",
@@ -128,6 +144,7 @@ def list_of_intents():
         },
         {
             "tag": "Shutup",
+            "extension": {"function": ''},
             "text": [
                 "Be quiet",
                 "Shut up",
@@ -145,6 +162,7 @@ def list_of_intents():
         },
         {
             "tag": "Slang",
+            "extension": {"function": ''},
             "text": [
                 "fuck off",
                 "fuck",
@@ -158,6 +176,7 @@ def list_of_intents():
         },
         {
             "tag": "GoodBye",
+            "extension": {"function": ''},
             "text": [
                 "Bye",
                 "Adios",
@@ -172,6 +191,7 @@ def list_of_intents():
         },
         {
             "tag": "CourtesyGoodBye",
+            "extension": {"function": ''},
             "text": [
                 "Thanks, bye",
                 "Thanks for the help, goodbye",
@@ -188,6 +208,7 @@ def list_of_intents():
         },
         {
             "tag": "Clever",
+            "extension": {"function": ''},
             "text": [
                 "You are very clever",
                 "You are a very clever girl",
@@ -205,6 +226,7 @@ def list_of_intents():
         },
         {
             "tag": "SelfAware",
+            "extension": {"function": ''},
             "text": [
                 "Can you prove you are self-aware",
                 "Can you prove you are self aware",
@@ -218,6 +240,25 @@ def list_of_intents():
                 "That is an interesting question, can you prove that you are?",
                 "That is an difficult question, can you prove that you are?",
                 "That depends, can you prove that you are?"
+            ]
+        },
+        {
+            "tag": "CurrentTimeQuery",
+            "extension": {"function": 'get_current_time'},
+            "text": [
+                "What is the time?",
+                "What's the time?",
+                "Do you know what time it is?",
+                "Do you know the time?",
+                "Can you tell me the time?",
+                "Tell me what time it is?",
+                "Time",
+                "What is the current time?"
+            ],
+            "responses": [
+                "The time is %%TIME%%",
+                "Right now it is %%TIME%%",
+                "It is around %%TIME%%"
             ]
         }
     ]
